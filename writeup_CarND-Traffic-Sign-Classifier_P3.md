@@ -30,20 +30,20 @@ Here is a link to my [project code](https://github.com/matttpj/CarND-Traffic-Sig
 
 I used the numpy library to calculate summary statistics of the traffic signs data set:
 
-* The size of training set is 34,799
-* The size of the validation set is 4,410
-* The size of test set is 12,630
-* The shape of a traffic sign image is (32, 32, 3)
-* The number of unique classes/labels in the data set is 43
+* The size of training set is __34,799__
+* The size of the validation set is __4,410__
+* The size of test set is __12,630__
+* The shape of a traffic sign image is __(32, 32, 3)__
+* The number of unique classes/labels in the data set is __43__
 
 #### 2. Include an exploratory visualization of the dataset.
 
 See below for an exploratory visualization of the training data set, including a random selection of 20 images and a histogram showing the frequency distribution of images by traffic sign type (class id).
 <br/>
-* __Sample images (Training Set)__  
-<img src="./output_images/training_sample_images.jpg" width=40% height=40%>
-* __Frequency distribution of images by class id (Training Set)__  
-<img src="./output_images/training_traffic_sign_frequency.jpg" width=40% height=40%>
+__Sample images (Training Set)__  
+<img src="./output_images/training_sample_images.jpg" width=50% height=50%>
+__Histogram of images by ClassId__  
+<img src="./output_images/training_traffic_sign_frequency.jpg" width=50% height=50%>
 <br/>
 
 ### Design and Test a Model Architecture
@@ -52,11 +52,11 @@ See below for an exploratory visualization of the training data set, including a
 
 Below steps were inspired by the Udacity programme materials and from reading the whitepaper on [Traffic Sign Recognition with Multi-Scale Convolutional Networks](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) by Pierre Sermanet and Yann LeCun.
 
-The following pre-processing steps were performed on the training data (../data/train.p).
+The following pre-processing steps were performed on the training data **_(../data/train.p)._**
  * __Convert images to grayscale__  
  _The above referenced Sermanet and LeCun whitepaper mentions on page 2 that using grayscale images improved ConvNet performance_
- * __Augment the number of images by a scale factor__
- _Many of the image classes had less than ~250 samples which was insufficient to train the model without giving undue bias to the image classes with greater than ~1250 samples; so I augmented the data with increased emphasis on scaling numbers of those images with fewer samples by creating additional samples with random variants of shear, blur and gamma transformations. This was done by:_
+ * __Augment the number of images by a scale factor__  
+ _Many of the image classes had less than ~250 samples which was insufficient to train the model without giving undue bias to the image classes with greater than ~1250 samples. Hence I augmented the data with increased emphasis on scaling the numbers of those images with fewer samples by creating additional samples with random variants of shear, blur and gamma transformations. This was done by:_
   * __Separate the traffic signs into separate arrays__
   * __Calculate the no. of signs per traffic sign class__
   * __Calculate the mean no. of signs per class__
@@ -67,7 +67,7 @@ The following pre-processing steps were performed on the training data (../data/
   _Final Scale Factor = (Initial Scale Factor * avg_per_sign / images_per_sign)_    
  _Initial Scale Factor was modified by trial and error to find a value that improved ConvNet accuracy_  
 
-The above augmentation method was derived from how described here _https://github.com/eqbal/CarND-Traffic-Sign-Classifier-Project_
+The above augmentation method was derived from what is described here _https://github.com/eqbal/CarND-Traffic-Sign-Classifier-Project_
 
 Finally, as recommended by Udacity programme, I chose to Normalize the image to within the range (-1, +1) by scaling with the following adjustment to the X_train pixel data >>> **(X_train - 128) / 128**.  However, Normalization appeared to have very limited impact on the accuracy of the model.
 
@@ -135,11 +135,11 @@ My final model results were:
 * test set accuracy of ? **still to do**  
 
 If an iterative approach was chosen: **still to do**
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+* What was the first architecture that was tried and why was it chosen? **still to do**
+* What were some problems with the initial architecture? **still to do**
+* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting. **still to do**
+* Which parameters were tuned? How were they adjusted and why? **still to do**
+* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model? **still to do**
 
 If a well known architecture was chosen:
 * What architecture was chosen?  **LeNet** _[but modified as per Udacity programme recommendation]_
