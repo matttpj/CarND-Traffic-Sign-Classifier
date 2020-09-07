@@ -130,7 +130,7 @@ _[minimally changed from the starter code provided]_
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I tried adjusting the following variables and settled on below values to maximise validation accuracy results.  
+To train the model, I tried adjusting each of the following variables up and down in turn. Then I settled with below values to maximise Validation Accuracy results.  
 __TensorFlow__  
 EPOCHS = 14  
 BATCH_SIZE = 128  
@@ -146,11 +146,11 @@ SCALE_FACTOR = 2.8  [initial]
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ?
-* test set accuracy of ?
+* training set accuracy of 0.84
+* validation set accuracy of 0.919
+* test set accuracy of ? **still to do**  
 
-If an iterative approach was chosen:
+If an iterative approach was chosen: **still to do**
 * What was the first architecture that was tried and why was it chosen?
 * What were some problems with the initial architecture?
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
@@ -158,60 +158,95 @@ If an iterative approach was chosen:
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
 
 If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+* What architecture was chosen?  **LeNet** _[but modified as per Udacity programme recommendation]_
+* Why did you believe it would be relevant to the traffic sign application?  _[as per programme recommendation]_
+* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well? **still to do**
 
 
 ### Test a Model on New Images
 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-Here are five German traffic signs that I found on the web, trimmed to 32x32 pixels:
+Here are five German traffic signs that I used Google Search to find on the web; which I then downloaded and trimmed to 32x32 pixels:
 
 <br/>
-<img src="./test_images/01.jpg" width=30% height=30%>
-<img src="./test_images/02.jpg" width=30% height=30%>
-<br/>
-<img src="./test_images/03.jpg" width=30% height=30%>
-<img src="./test_images/04.jpg" width=30% height=30%>
-<br/>
-<img src="./test_images/05.jpg" width=30% height=30%>
+<img src="./output_images/web_download_images.jpg" width=100% height=100%>
 <br/>
 
 The first image might be difficult to classify because ...
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
-Here are the results of the prediction:
+Here are the results of the Softmax prediction:
 
-| Image			        |     Prediction	        					|
-|:---------------------:|:---------------------------------------------:|
-| Stop Sign      		| Stop sign   									|
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| #       |    Image			        |     Prediction	        					|
+|:-------:|:---------------------:|:---------------------------------:|
+| 01.jpg  | 30 km/h      		  | 30 km/h   									|
+| 02.jpg  | Yield     			  | Yield 										|
+| 03.jpg  | Bike crossing		  | Roundabout											|
+| 04.jpg  | Roadworks	      	| Roadworks					 				|
+| 05.jpg  | Bumpy road			  | Yield     							|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 3 of the 5 traffic signs, which gives an accuracy of 60%. This compares a little less than favourable to the accuracy of the test set of images.
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+The code for making predictions on my final model is located in one of the bottom cells of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first image 01.jpg, the model is very sure that this is a 30km/h sign (probability of 100%), and the image does contain a 30km/h sign. The top five soft max probabilities were:
 
-| Probability         	|     Prediction	        					|
-|:---------------------:|:---------------------------------------------:|
-| .60         			| Stop sign   									|
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| Rank     | Probability         	|     Prediction	        					|
+|:-----:|:---------------------:|:---------------------------------:|
+|  1.   | 1.00         			| 30 km/h   									|
+|  2.   | 0     				| 20 km/h  										|
+|  3.   | 0					| 50 km/h 										|
+|  4.   | 0	      			| 50 km/h 					 				|
+|  5.   | 0				    | 100 km/h      							|
 
+For the second image 02.jpg, the model is very sure that this is a Yield sign (probability of 100%), and the image does contain a Yield sign. The top five soft max probabilities were:
 
-For the second image ...
+| Rank     | Probability         	|     Prediction	        					|
+|:-----:|:---------------------:|:---------------------------------:|
+|  1.   | 1.00         			| Yield   									|
+|  2.   | 0     				| Bumpy road  										|
+|  3.   | 0					| Priority 										|
+|  4.   | 0	      			| Tractor					 				|
+|  5.   | 0				    | Children crossing      							|
+
+For the third image 03.jpg, the model is very sure that this is a Roundabout sign (probability of 97%), but the image is a Bicycles sign.  From looking again at the GTSRB images, Bicycles crossing sign is inside a red triangle.  Hence it is no surprise that the model does not recognise this sign. The top five soft max probabilities were:
+
+| Rank     | Probability         	|     Prediction	        					|
+|:-----:|:---------------------:|:---------------------------------:|
+|  1.   | 0.97         			| Roundabout   									|
+|  2.   | 0.02     				| Priority 										|
+|  3.   | 0.01					| Keep right 										|
+|  4.   | 0	      			| Left turn 					 				|
+|  5.   | 0				    | Priority at next junction     							|
+
+For the fourth image 04.jpg, the model is very sure that this is a Roadworks sign (probability of 100%), and the image does contain a Roadworks sign. The top five soft max probabilities were:
+
+| Rank     | Probability         	|     Prediction	        					|
+|:-----:|:---------------------:|:---------------------------------:|
+|  1.   | 1.00         			| Roadworks   									|
+|  2.   | 0     				| Children crossing 										|
+|  3.   | 0					| Bumpy road 										|
+|  4.   | 0	      			| Right bend 					 				|
+|  5.   | 0				    | Beware of ice/snow      							|
+
+For the fifth image 05.jpg, the model is relatively sure that this is a Yield sign (probability of 89%), but the image is in fact a Bumpy road sign. The top five soft max probabilities were:
+
+| Rank     | Probability         	|     Prediction	        					|
+|:-----:|:---------------------:|:---------------------------------:|
+|  1.   | 0.89         			| Yield  									|
+|  2.   | 0.11     				| Tractor  										|
+|  3.   | 0					| Bumpy road 										|
+|  4.   | 0	      			| Road narrows					 				|
+|  5.   | 0				    | Children crossing       							|
+
+<br/>
+<img src="./output_images/web_download_softmax_predicts.jpg" width=100% height=100%>
+<br/>
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
