@@ -41,9 +41,9 @@ I used the numpy library to calculate summary statistics of the traffic signs da
 See below for an exploratory visualization of the training data set, including a random selection of 20 images and a histogram showing the frequency distribution of images by traffic sign type (class id).
 <br/>
 __Sample images (Training Set)__  
-<img src="./output_images/training_sample_images.jpg" width=50% height=50%>
+<img src="./output_images/training_sample_images.jpg" width=50% height=50%>  
 __Histogram of images by ClassId__  
-<img src="./output_images/training_traffic_sign_frequency.jpg" width=50% height=50%>
+<img src="./output_images/training_traffic_sign_frequency.jpg" width=50% height=50%>  
 <br/>
 
 ### Design and Test a Model Architecture
