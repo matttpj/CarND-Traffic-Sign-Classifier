@@ -5,10 +5,6 @@
 ### Project: CarND-Traffic-Sign-Classifier-P3
 ---
 
-### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
----
-
 **Build a Traffic Sign Classifer**
 
 The main steps for this project are the following:
@@ -42,16 +38,13 @@ The main steps for this project are the following:
 ---
 ### Writeup / README
 
-#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
-
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+Here is a link to my [project code](https://github.com/matttpj/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
 ### Data Set Summary & Exploration
 
 #### 1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
 
-I used the numpy library to calculate summary statistics of the traffic
-signs data set:
+I used the numpy library to calculate summary statistics of the traffic signs data set:
 
 * The size of training set is 34,799
 * The size of the validation set is 4,410
@@ -62,7 +55,6 @@ signs data set:
 #### 2. Include an exploratory visualization of the dataset.
 
 See below for an exploratory visualization of the training data set, including a random selection of 20 images and a histogram showing the frequency distribution of images by traffic sign type (class id).
-
 <br/>
 * Sample images  
 <img src="./output_images/training_sample_images.jpg" width=40% height=40%>
@@ -74,41 +66,40 @@ See below for an exploratory visualization of the training data set, including a
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
+Below steps were inspired by the Udacity programme materials and from reading the whitepaper on [Traffic Sign Recognition with Multi-Scale Convolutional Networks by Pierre Sermanet and Yann LeCun] (http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf).
 
-As a first step, I decided to convert the images to grayscale because ..
-Here is an example of a traffic sign image before and after grayscaling.
-
-As recommended by the Udacity programme, I read the whitepaper on [Traffic Sign Recognition with Multi-Scale Convolutional Networks by Pierre Sermanet and Yann LeCun] (http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf).
-
-Hence, I chose to take a number of pre-processing steps on the training data (../data/train.p).
- * Convert images to grayscale
- _LeCun paper page 2 mentions that this improved ConvNet performance_
+The following pre-processing steps were performed on the training data (../data/train.p).
+ * Convert images to grayscale  
+ _LeCun paper page 2 mentions that grayscale images improved ConvNet performance_
  * Augment the images by a scale factor
- _Many of the image classes had less than ~250 samples which was insufficient to train the model without giving undue bias to the image classes with greater than ~1250 samples; so I augmented the data with increased emphasis on scaling those images with fewer samples by creating additional samples with random variants of shear, blur and gamma transformations. This was done by:_
+ _Many of the image classes had less than ~250 samples which was insufficient to train the model without giving undue bias to the image classes with greater than ~1250 samples; so I augmented the data with increased emphasis on scaling numbers of those images with fewer samples by creating additional samples with random variants of shear, blur and gamma transformations. This was done by:_
   * Separating the traffic signs into separate arrays
   * Calculate the no. of signs per traffic sign class
   * Calculate the mean no. of signs per class
-  * Calculate the mean per sign class / images per sign class
-  _This will show for each image class the factor by how much it is greater or lesser compared to the average_
-  * Select an initial Scale Factor multiplier to boost the signs with fewer samples over ~ 2,000 sample threshold to reduce the model bias
-  * Generate additional images per class as determined by final Scale Factor
-  _Final Scale Factor = (Initial Scale Factor * avg_per_sign / imgs_per_sign)_
- _Initial Scale Factor was modified by trial and error to find a value that improved ConvNet accuracy_
+  * Calculate the mean per sign class / images per sign class  
+  _This will show for each image class the factor by how much it is greater or lesser compared to the average_  
+  * Select an initial Scale Factor multiplier to boost the signs with fewer samples over ~ 2,000 sample threshold to reduce the model bias  
+  * Generate additional images per class as determined by final Scale Factor    
+  _Final Scale Factor = (Initial Scale Factor * avg_per_sign / imgs_per_sign)_    
+ _Initial Scale Factor was modified by trial and error to find a value that improved ConvNet accuracy_  
 
 The above augmentation method was derived from method described here _https://github.com/eqbal/CarND-Traffic-Sign-Classifier-Project_
 
-Finally, as recommended by Udacity programme, I chose to Normalize the image to within the range (-1, +1) by making the following adjustment to the X_train pixel data >>> (X_train - 128) / 128.
-However, Normalization appeared to have very limited impact on the accuracy of the model.
+Finally, as recommended by Udacity programme, I chose to Normalize the image to within the range (-1, +1) by making the following adjustment to the X_train pixel data >>> (X_train - 128) / 128.  However, Normalization appeared to have very limited impact on the accuracy of the model.
 
 ![alt text][image3]
 
-The difference between the original data set and the augmented data set is the following ...
+The difference between the original data set and the augmented data set is illustrated by the below charts.
 <br/>
-* Training data set: pre v. post image pre-processing  
+* Training data set: pre v. post image pre-processing and augmentation
 <img src="./output_images/training_pre_v_post_image_preprocessing.jpg" width=60% height=60%>
 <br/>
 
 Here are some example of augmented images:
+
+* Augmented image examples
+<img src="./output_images/training_traffic_sign_frequency.jpg" width=40% height=40%>
+<br/>
 
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
@@ -126,7 +117,6 @@ My final model consisted of the following layers:
 | Softmax				| etc.        									|
 |						|												|
 |						|												|
-
 
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
