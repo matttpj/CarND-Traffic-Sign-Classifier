@@ -109,11 +109,19 @@ Taking above LeNet model, as a starting point my final model consisted of the fo
 | Layer         		|     Description	        					|
 |:---------------------:|:---------------------------------------------:|
 | Input         		| 32x32x3 RGB image   							|
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Layer 1: Convolution 3x3     	| 1x1 stride, same padding, outputs 28x28x6 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
+| Max pooling	      	| Input = 28x28x6 2x2 stride,  outputs 14x14x6				|
+| Layer 2: Convolution 3x3     	| 1x1 stride, same padding, outputs 10x10x6 	|
+| RELU					|												|
+| Max pooling	      	| Input = 10x10x6 2x2 stride,  outputs 5x5x6				|
+| Flatten		| Input = 10x10x6. Output = 5x5x16 									|
+| Layer 3: Convolution 3x3     	| Input = 400, Output = 120 	|
+| RELU					|												|
+| Layer 4: Convolution 3x3     	| Input = 120, Output = 84 	|
+| RELU					|												|
+| Layer 5: Convolution 3x3     	| Input = 84, Output = 43 	|
+| RELU					|												|
 | Softmax				| etc.        									|
 |						|												|
 |						|												|
@@ -147,14 +155,15 @@ If a well known architecture was chosen:
 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-Here are five German traffic signs that I found on the web:
+Here are five German traffic signs that I found on the web, trimmed to 32x32 pixels:
 
 <br/>
 <img src="./test_images/01.jpg" width=30% height=30%>
 <img src="./test_images/02.jpg" width=30% height=30%>
-<img src="./test_images/03.jpg" width=30% height=30%>
 <br/>
+<img src="./test_images/03.jpg" width=30% height=30%>
 <img src="./test_images/04.jpg" width=30% height=30%>
+<br/>
 <img src="./test_images/05.jpg" width=30% height=30%>
 <br/>
 
