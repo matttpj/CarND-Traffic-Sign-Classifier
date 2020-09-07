@@ -56,9 +56,9 @@ I used the numpy library to calculate summary statistics of the traffic signs da
 
 See below for an exploratory visualization of the training data set, including a random selection of 20 images and a histogram showing the frequency distribution of images by traffic sign type (class id).
 <br/>
-* __Sample images__  
+* __Sample images (Training Set)__  
 <img src="./output_images/training_sample_images.jpg" width=40% height=40%>
-* __Frequency distribution__  
+* __Frequency distribution of images by class id (Training Set)__  
 <img src="./output_images/training_traffic_sign_frequency.jpg" width=40% height=40%>
 <br/>
 
@@ -93,20 +93,18 @@ The difference between the original data set and the augmented data set is illus
 <img src="./output_images/training_pre_v_post_image_preprocessing.jpg" width=60% height=60%>
 <br/>
 
-Here are some example of augmented images:
-
+Here are some example of augmented images created off the original image X_train[555], Class Id: 12 >> Priority road:  
 * __Augmented image examples__
 <img src="./output_images/training_augmented_images_sample_transformations.jpg" width=40% height=40%>
 <br/>
 
-
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
 * __LeNet training model__
-<img src="./output_images/lenet.jpg" width=50% height=50%>
+<img src="./output_images/lenet.png" width=50% height=50%>
 <br/>
 
-My final model consisted of the following layers:
+Taking LeNet model, as a starting point my final model consisted of the following layers:
 
 | Layer         		|     Description	        					|
 |:---------------------:|:---------------------------------------------:|
