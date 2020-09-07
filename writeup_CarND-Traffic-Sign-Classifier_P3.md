@@ -16,13 +16,6 @@ The main steps for this project are the following:
 * Summarize the results with a written report
 
 
-[//]: # (Image References)
-
-<br/>
-<img src="./output_images/training_sample_images.jpg" width=40% height=40%>
-<img src="./output_images/training_traffic_sign_frequency.jpg" width=40% height=40%>
-<br/>
-
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
