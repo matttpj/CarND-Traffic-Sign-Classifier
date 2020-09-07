@@ -23,15 +23,6 @@ The main steps for this project are the following:
 <img src="./output_images/training_traffic_sign_frequency.jpg" width=40% height=40%>
 <br/>
 
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
-
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
@@ -177,24 +168,24 @@ Each of the images looked very clear and straightforward to classify.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
-Here are the results of the Softmax prediction:
+Here are the results of my model's prediction on the images downloaded from the web:
 
 | #       |    Image			        |     Prediction	        					|
 |:-------:|:---------------------:|:---------------------------------:|
-| 01.jpg  | 30 km/h      		  | 30 km/h   									|
-| 02.jpg  | Yield     			  | Yield 										|
+| 01.jpg  | 30 km/h      		  | 100%  Accurate									|
+| 02.jpg  | Yield     			  | 100%	Accurate									|
 | 03.jpg  | Bike crossing		  | Roundabout											|
 | 04.jpg  | Roadworks	      	| Roadworks					 				|
 | 05.jpg  | Bumpy road			  | Yield     							|
 
 
-The model was able to correctly guess 3 of the 5 traffic signs, which gives an accuracy of 60%. This compares a little less than favourable to the accuracy of the test set of images. However, 03.jpg should be discounted as the Training data set only contains Bicycle warning signs inside a red triangle (class id 29).  Hence, this would make for overall accuracy of 75% (3 of 4).
+The model was able to correctly guess 3 of the 5 traffic signs, which gives an accuracy of 60%. This compares a little less than favourable to the accuracy of the test set of images. However, 03.jpg should be discounted as the Training data set only contains Bicycle warning signs inside a red triangle (class id 29).  Hence, this would make for overall accuracy of 75% (3 of 4), with only 05.jpg of the Bumpy road incorrectly classified.
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in one of the bottom cells of the Ipython notebook.
+The code for making predictions on my final model is located in one of the bottom cells of the Ipython notebook.  **still to do**
 
-For the first image 01.jpg, the model is very sure that this is a 30km/h sign (probability of 100%), and the image does contain a 30km/h sign. The top five soft max probabilities were:
+For the first image 01.jpg, the model is very sure that this is a 30km/h sign (probability of 100%), and the image does contain a 30km/h sign. The top five softmax probabilities were:
 
 | Rank     | Probability         	|     Prediction	        					|
 |:-----:|:---------------------:|:---------------------------------:|
@@ -204,7 +195,7 @@ For the first image 01.jpg, the model is very sure that this is a 30km/h sign (p
 |  4.   | 0	      			| 50 km/h 					 				|
 |  5.   | 0				    | 100 km/h      							|
 
-For the second image 02.jpg, the model is very sure that this is a Yield sign (probability of 100%), and the image does contain a Yield sign. The top five soft max probabilities were:
+For the second image 02.jpg, the model is very sure that this is a Yield sign (probability of 100%), and the image does contain a Yield sign. The top five softmax probabilities were:
 
 | Rank     | Probability         	|     Prediction	        					|
 |:-----:|:---------------------:|:---------------------------------:|
@@ -214,7 +205,7 @@ For the second image 02.jpg, the model is very sure that this is a Yield sign (p
 |  4.   | 0	      			| Tractor					 				|
 |  5.   | 0				    | Children crossing      							|
 
-For the third image 03.jpg, the model is very sure that this is a Roundabout sign (probability of 97%), but the image is a Bicycles sign.  From looking again at the GTSRB images, Bicycles crossing sign is inside a red triangle.  Hence it is no surprise that the model does not recognise this sign. The top five soft max probabilities were:
+For the third image 03.jpg, the model is very sure that this is a Roundabout sign (probability of 97%), but the image is a Bicycles sign.  From looking again at the GTSRB images, Bicycles crossing sign is inside a red triangle.  Hence it is no surprise that the model does not recognise this sign. The top five softmax probabilities were:
 
 | Rank     | Probability         	|     Prediction	        					|
 |:-----:|:---------------------:|:---------------------------------:|
@@ -224,7 +215,7 @@ For the third image 03.jpg, the model is very sure that this is a Roundabout sig
 |  4.   | 0	      			| Left turn 					 				|
 |  5.   | 0				    | Priority at next junction     							|
 
-For the fourth image 04.jpg, the model is very sure that this is a Roadworks sign (probability of 100%), and the image does contain a Roadworks sign. The top five soft max probabilities were:
+For the fourth image 04.jpg, the model is very sure that this is a Roadworks sign (probability of 100%), and the image does contain a Roadworks sign. The top five softmax probabilities were:
 
 | Rank     | Probability         	|     Prediction	        					|
 |:-----:|:---------------------:|:---------------------------------:|
@@ -234,7 +225,7 @@ For the fourth image 04.jpg, the model is very sure that this is a Roadworks sig
 |  4.   | 0	      			| Right bend 					 				|
 |  5.   | 0				    | Beware of ice/snow      							|
 
-For the fifth image 05.jpg, the model is relatively sure that this is a Yield sign (probability of 89%), but the image is in fact a Bumpy road sign. The top five soft max probabilities were:
+For the fifth image 05.jpg, the model is relatively sure that this is a Yield sign (probability of 89%), but the image is in fact a Bumpy road sign. The top five softmax probabilities were:
 
 | Rank     | Probability         	|     Prediction	        					|
 |:-----:|:---------------------:|:---------------------------------:|
@@ -243,10 +234,11 @@ For the fifth image 05.jpg, the model is relatively sure that this is a Yield si
 |  3.   | 0					| Bumpy road 										|
 |  4.   | 0	      			| Road narrows					 				|
 |  5.   | 0				    | Children crossing       							|
-
 <br/>
 <img src="./output_images/web_download_softmax_predicts.jpg" width=100% height=100%>
 <br/>
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
+
+**Not attempted**
