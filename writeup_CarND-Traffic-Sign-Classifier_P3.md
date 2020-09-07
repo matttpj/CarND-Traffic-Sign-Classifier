@@ -167,13 +167,13 @@ If a well known architecture was chosen:
 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-Here are five German traffic signs that I used Google Search to find on the web; which I then downloaded and trimmed to 32x32 pixels:
+Here are five German traffic signs that I used Google Search to find on the internet and which I then downloaded and trimmed to 32x32 pixels. These images are available at **_./test_images/*.jpg_**
 
 <br/>
 <img src="./output_images/web_download_images.jpg" width=100% height=100%>
 <br/>
 
-The first image might be difficult to classify because ...
+Each of the images looked very clear and straightforward to classify.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -188,7 +188,7 @@ Here are the results of the Softmax prediction:
 | 05.jpg  | Bumpy road			  | Yield     							|
 
 
-The model was able to correctly guess 3 of the 5 traffic signs, which gives an accuracy of 60%. This compares a little less than favourable to the accuracy of the test set of images.
+The model was able to correctly guess 3 of the 5 traffic signs, which gives an accuracy of 60%. This compares a little less than favourable to the accuracy of the test set of images. However, 03.jpg should be discounted as the Training data set only contains Bicycle warning signs inside a red triangle (class id 29).  Hence, this would make for overall accuracy of 75% (3 of 4).
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
