@@ -130,7 +130,7 @@ _[minimally changed from the starter code provided]_
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I tried adjusting the following variables and settled on below values to maximise validation accuracy results.
+To train the model, I tried adjusting the following variables and settled on below values to maximise validation accuracy results.  
 __TensorFlow__  
 EPOCHS = 14  
 BATCH_SIZE = 128  
