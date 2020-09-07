@@ -104,7 +104,7 @@ Here are some example of augmented images created off the original image X_train
 <img src="./output_images/lenet.png" width=50% height=50%>
 <br/>
 
-Taking LeNet model, as a starting point my final model consisted of the following layers:
+Taking above LeNet model, as a starting point my final model consisted of the following layers:
 
 | Layer         		|     Description	        					|
 |:---------------------:|:---------------------------------------------:|
@@ -149,8 +149,11 @@ If a well known architecture was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6]
-![alt text][image7] ![alt text][image8]
+<img src="./test_images/01.jpg" width=30% height=30%>
+<img src="./test_images/02.jpg" width=30% height=30%>
+<img src="./test_images/03.jpg" width=30% height=30%>
+<img src="./test_images/04.jpg" width=30% height=30%>
+<img src="./test_images/05.jpg" width=30% height=30%>
 
 The first image might be difficult to classify because ...
 
