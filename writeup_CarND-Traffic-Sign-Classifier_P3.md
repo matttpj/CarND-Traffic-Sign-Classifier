@@ -74,7 +74,7 @@ The following pre-processing steps were performed on the training data (../data/
   _Final Scale Factor = (Initial Scale Factor * avg_per_sign / images_per_sign)_    
  _Initial Scale Factor was modified by trial and error to find a value that improved ConvNet accuracy_  
 
-The above augmentation method was derived from method described here _https://github.com/eqbal/CarND-Traffic-Sign-Classifier-Project_
+The above augmentation method was derived from how described here _https://github.com/eqbal/CarND-Traffic-Sign-Classifier-Project_
 
 Finally, as recommended by Udacity programme, I chose to Normalize the image to within the range (-1, +1) by scaling with the following adjustment to the X_train pixel data >>> **(X_train - 128) / 128**.  However, Normalization appeared to have very limited impact on the accuracy of the model.
 
@@ -129,7 +129,7 @@ __LeNet__
 mu = 0  
 sigma = 0.1  
 __Training Pipeline__  
-rate = 0.001  
+rate = 0.0001  
 __Image Pre-Processing__  
 SCALE_FACTOR = 2.8  [initial]  
 
