@@ -66,11 +66,11 @@ See below for an exploratory visualization of the training data set, including a
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-Below steps were inspired by the Udacity programme materials and from reading the whitepaper on [Traffic Sign Recognition with Multi-Scale Convolutional Networks by Pierre Sermanet and Yann LeCun] (http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf).
+Below steps were inspired by the Udacity programme materials and from reading the whitepaper on [Traffic Sign Recognition with Multi-Scale Convolutional Networks by Pierre Sermanet and Yann LeCun](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf).
 
 The following pre-processing steps were performed on the training data (../data/train.p).
  * Convert images to grayscale  
- _LeCun paper page 2 mentions that grayscale images improved ConvNet performance_
+ _The above referenced Sermanet and LeCun whitepaper mentions on page 2 that using grayscale images improved ConvNet performance_
  * Augment the images by a scale factor
  _Many of the image classes had less than ~250 samples which was insufficient to train the model without giving undue bias to the image classes with greater than ~1250 samples; so I augmented the data with increased emphasis on scaling numbers of those images with fewer samples by creating additional samples with random variants of shear, blur and gamma transformations. This was done by:_
   * Separating the traffic signs into separate arrays
@@ -80,7 +80,7 @@ The following pre-processing steps were performed on the training data (../data/
   _This will show for each image class the factor by how much it is greater or lesser compared to the average_  
   * Select an initial Scale Factor multiplier to boost the signs with fewer samples over ~ 2,000 sample threshold to reduce the model bias  
   * Generate additional images per class as determined by final Scale Factor    
-  _Final Scale Factor = (Initial Scale Factor * avg_per_sign / imgs_per_sign)_    
+  _Final Scale Factor = (Initial Scale Factor * avg_per_sign / images_per_sign)_    
  _Initial Scale Factor was modified by trial and error to find a value that improved ConvNet accuracy_  
 
 The above augmentation method was derived from method described here _https://github.com/eqbal/CarND-Traffic-Sign-Classifier-Project_
