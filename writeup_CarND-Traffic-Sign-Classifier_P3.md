@@ -130,17 +130,17 @@ _[minimally changed from the starter code provided]_
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I tried adjusting the following variables and settled on below values to maximise validation accuracy results. 
-_TensorFlow_
-EPOCHS = 14
-BATCH_SIZE = 128
-_LeNet_
-mu = 0
-sigma = 0.1
-_Training Pipeline_
-rate = 0.001
-_Image Pre-Processing_
-SCALE_FACTOR = 2.8  [initial]
+To train the model, I tried adjusting the following variables and settled on below values to maximise validation accuracy results.
+__TensorFlow__  
+EPOCHS = 14  
+BATCH_SIZE = 128  
+__LeNet__  
+mu = 0  
+sigma = 0.1  
+__Training Pipeline__  
+rate = 0.001  
+__Image Pre-Processing__  
+SCALE_FACTOR = 2.8  [initial]  
 
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
