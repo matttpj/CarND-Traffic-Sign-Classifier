@@ -56,9 +56,9 @@ I used the numpy library to calculate summary statistics of the traffic signs da
 
 See below for an exploratory visualization of the training data set, including a random selection of 20 images and a histogram showing the frequency distribution of images by traffic sign type (class id).
 <br/>
-* Sample images  
+* __Sample images__  
 <img src="./output_images/training_sample_images.jpg" width=40% height=40%>
-* Frequency distribution  
+* __Frequency distribution__  
 <img src="./output_images/training_traffic_sign_frequency.jpg" width=40% height=40%>
 <br/>
 
@@ -66,43 +66,45 @@ See below for an exploratory visualization of the training data set, including a
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-Below steps were inspired by the Udacity programme materials and from reading the whitepaper on [Traffic Sign Recognition with Multi-Scale Convolutional Networks by Pierre Sermanet and Yann LeCun](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf).
+Below steps were inspired by the Udacity programme materials and from reading the whitepaper on [Traffic Sign Recognition with Multi-Scale Convolutional Networks](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) by Pierre Sermanet and Yann LeCun.
 
 The following pre-processing steps were performed on the training data (../data/train.p).
- * Convert images to grayscale  
+ * __Convert images to grayscale__  
  _The above referenced Sermanet and LeCun whitepaper mentions on page 2 that using grayscale images improved ConvNet performance_
- * Augment the images by a scale factor
+ * __Augment the number of images by a scale factor__
  _Many of the image classes had less than ~250 samples which was insufficient to train the model without giving undue bias to the image classes with greater than ~1250 samples; so I augmented the data with increased emphasis on scaling numbers of those images with fewer samples by creating additional samples with random variants of shear, blur and gamma transformations. This was done by:_
-  * Separating the traffic signs into separate arrays
-  * Calculate the no. of signs per traffic sign class
-  * Calculate the mean no. of signs per class
-  * Calculate the mean per sign class / images per sign class  
+  * __Separate the traffic signs into separate arrays__
+  * __Calculate the no. of signs per traffic sign class__
+  * __Calculate the mean no. of signs per class__
+  * __Calculate the mean per sign class / images per sign class__  
   _This will show for each image class the factor by how much it is greater or lesser compared to the average_  
-  * Select an initial Scale Factor multiplier to boost the signs with fewer samples over ~ 2,000 sample threshold to reduce the model bias  
-  * Generate additional images per class as determined by final Scale Factor    
+  * __Select an initial Scale Factor multiplier to boost the signs with fewer samples over ~ 2,000 sample threshold to reduce the model bias__  
+  * __Generate additional images per class as determined by final Scale Factor__    
   _Final Scale Factor = (Initial Scale Factor * avg_per_sign / images_per_sign)_    
  _Initial Scale Factor was modified by trial and error to find a value that improved ConvNet accuracy_  
 
 The above augmentation method was derived from method described here _https://github.com/eqbal/CarND-Traffic-Sign-Classifier-Project_
 
-Finally, as recommended by Udacity programme, I chose to Normalize the image to within the range (-1, +1) by making the following adjustment to the X_train pixel data >>> (X_train - 128) / 128.  However, Normalization appeared to have very limited impact on the accuracy of the model.
-
-![alt text][image3]
+Finally, as recommended by Udacity programme, I chose to Normalize the image to within the range (-1, +1) by scaling with the following adjustment to the X_train pixel data >>> **(X_train - 128) / 128**.  However, Normalization appeared to have very limited impact on the accuracy of the model.
 
 The difference between the original data set and the augmented data set is illustrated by the below charts.
 <br/>
-* Training data set: pre v. post image pre-processing and augmentation
+* __Training data set: pre v. post image pre-processing and augmentation__
 <img src="./output_images/training_pre_v_post_image_preprocessing.jpg" width=60% height=60%>
 <br/>
 
 Here are some example of augmented images:
 
-* Augmented image examples
-<img src="./output_images/training_traffic_sign_frequency.jpg" width=40% height=40%>
+* __Augmented image examples__
+<img src="./output_images/training_augmented_images_sample_transformations.jpg" width=40% height=40%>
 <br/>
 
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+
+* __LeNet training model__
+<img src="./output_images/lenet.jpg" width=50% height=50%>
+<br/>
 
 My final model consisted of the following layers:
 
