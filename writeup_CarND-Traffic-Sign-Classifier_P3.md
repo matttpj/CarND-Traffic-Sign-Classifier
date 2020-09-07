@@ -149,11 +149,14 @@ If a well known architecture was chosen:
 
 Here are five German traffic signs that I found on the web:
 
+<br/>
 <img src="./test_images/01.jpg" width=30% height=30%>
 <img src="./test_images/02.jpg" width=30% height=30%>
 <img src="./test_images/03.jpg" width=30% height=30%>
+<br/>
 <img src="./test_images/04.jpg" width=30% height=30%>
 <img src="./test_images/05.jpg" width=30% height=30%>
+<br/>
 
 The first image might be difficult to classify because ...
 
