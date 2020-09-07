@@ -105,6 +105,7 @@ Here are some example of augmented images created off the original image X_train
 <br/>
 
 Taking above LeNet model, as a starting point my final model consisted of the following layers:
+_[minimally changed from the starter code provided]_
 
 | Layer         		|     Description	        					|
 |:---------------------:|:---------------------------------------------:|
@@ -114,7 +115,7 @@ Taking above LeNet model, as a starting point my final model consisted of the fo
 | Max pooling	      	| Input = 28x28x6 2x2 stride,  outputs 14x14x6				|
 | Layer 2: Convolution 3x3     	| 1x1 stride, same padding, outputs 10x10x6 	|
 | RELU					|												|
-| Max pooling	      	| Input = 10x10x6 2x2 stride,  outputs 5x5x6				|
+| Max pooling	      	| Input = 14x14x6 2x2 stride,  outputs 10x10x16				|
 | Flatten		| Input = 10x10x6. Output = 5x5x16 									|
 | Layer 3: Convolution 3x3     	| Input = 400, Output = 120 	|
 | RELU					|												|
@@ -129,7 +130,18 @@ Taking above LeNet model, as a starting point my final model consisted of the fo
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used an ....
+To train the model, I tried adjusting the following variables and settled on below values to maximise validation accuracy results. 
+_TensorFlow_
+EPOCHS = 14
+BATCH_SIZE = 128
+_LeNet_
+mu = 0
+sigma = 0.1
+_Training Pipeline_
+rate = 0.001
+_Image Pre-Processing_
+SCALE_FACTOR = 2.8  [initial]
+
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
