@@ -35,29 +35,6 @@ class ImagePreprocessor():
 
         self.save_data()
 
-    def plot_samples(self):
-        item, count = np.unique(self.y_train, return_counts=True)
-        freq = np.array((item, count)).T
-
-        item2, count2 = np.unique(self.extended_labels, return_counts=True)
-        freq2 = np.array((item2, count2)).T
-
-
-        print('Before Data Preprocessing: %d samples' % (self.y_train.shape[0]))
-
-        plt.figure(1)
-        plt.bar(item, count, alpha=0.2)
-        plt.title('Before Data Preprocessing: Unequally Distributed Data')
-
-        print('After Data Preprocessing: %d samples' % (self.extended_labels.shape[0]))
-
-        plt.figure(2)
-        plt.bar(item2, count2, alpha=0.2)
-        plt.title('After Data Preprocessing: More Equally Distributed Data')
-
-        plt.show()
-
-
     def augment_data(self, X_train, y_train, scale=2):
         total_traffic_signs = len(set(y_train))
 
@@ -68,7 +45,7 @@ class ImagePreprocessor():
         separated_data      = []
 
         for traffic_sign in range(total_traffic_signs):
-            images_in_this_sign = X_train[y_train == traffic_sign, ...]
+            images_in_this_sign = X_train[y_train == traffic_sign]
             separated_data.append(images_in_this_sign)
 
         expanded_data   = np.array(np.zeros((1, 32, 32, 3)))

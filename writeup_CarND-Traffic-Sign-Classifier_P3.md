@@ -53,9 +53,7 @@ __Histogram of images by ClassId__
 Below steps were inspired by the Udacity programme materials and from reading the whitepaper on [Traffic Sign Recognition with Multi-Scale Convolutional Networks](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) by Pierre Sermanet and Yann LeCun.
 
 The following pre-processing steps were performed on the training data **_(../data/train.p)._**
- * __Convert images to grayscale__  
- _The above referenced Sermanet and LeCun whitepaper mentions on page 2 that using grayscale images improved ConvNet performance_
- * __Augment the number of images by a scale factor__  
+  * __Augment the number of images by a scale factor__  
  _Many of the image classes had less than ~250 samples which was insufficient to train the model without giving undue bias to the image classes with greater than ~1250 samples. Hence I augmented the data with increased emphasis on scaling the numbers of those images with fewer samples by creating additional samples with random variants of shear, blur and gamma transformations. This was done with the following steps:_
   * __Separate the traffic signs into separate arrays__
   * __Calculate the no. of signs per traffic sign class__
@@ -69,7 +67,13 @@ The following pre-processing steps were performed on the training data **_(../da
 
 The above augmentation method was derived from what is described here _https://github.com/eqbal/CarND-Traffic-Sign-Classifier-Project_
 
-Finally, as recommended by Udacity programme, I chose to Normalize the image to within the range (-1, +1) by scaling with the following adjustment to the X_train pixel data >>> **(X_train - 128) / 128**.  However, Normalization appeared to have very limited impact on the accuracy of the model.
+Prior to running the model, additional steps were performed:
+* __Convert images to grayscale__  
+_The above referenced Sermanet and LeCun whitepaper mentions on page 2 that using grayscale images improved ConvNet performance_
+* __Normalize the data__  
+
+Finally, as recommended by Udacity programme, I chose to Normalize the image to within the range (-1, +1) by scaling with the following adjustment to the X_train pixel data >>> **(X_train - 128) / 128**.  
+_The above was recommended by Udacity programme_
 
 The difference between the original data set and the augmented data set is illustrated by the below charts.
 <br/>
@@ -117,12 +121,12 @@ _[minimally changed from the starter code provided]_
 To train the model, I tried adjusting each of the following variables up and down in turn. Then I settled with below values to maximise Validation Accuracy results.  
 __TensorFlow__  
 * EPOCHS = 14  
-* BATCH_SIZE = 128  
+* BATCH_SIZE = 96   
 __LeNet__  
 * mu = 0  
 * sigma = 0.1  
 __Training Pipeline__  
-* rate = 0.001  
+* rate = 0.0009    
 __Image Pre-Processing__  
 * SCALE_FACTOR = 2.8  [initial]  
 
@@ -130,12 +134,12 @@ __Image Pre-Processing__
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of 0.84
-* validation set accuracy of 0.919
+* training set accuracy of 0.911
+* validation set accuracy of 0.933
 * test set accuracy of ? **still to do**  
 
 If an iterative approach was chosen: **still to do**
-* What was the first architecture that was tried and why was it chosen? **still to do**
+* What was the first architecture that was tried and why was it chosen? **The architecture was kept pretty much the same as provided by the course**
 * What were some problems with the initial architecture? **still to do**
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting. **still to do**
 * Which parameters were tuned? How were they adjusted and why? **still to do**
@@ -144,7 +148,7 @@ __EPOCHS__ >> Accuracy improved after ~ 8 epochs but by 12 epochs any improvemen
 __mu__ >> Accuracy decreased if mu was made too large or too small
 __sigma__ >> Accuracy decreased if sigma was made too large or too small
 __rate__ >> Accuracy decreased if the training rate was made too large or too small
-__SCALE_FACTOR [initial]__  >> This needed to be kept < 2.8 so that the pickle file did not exceed 3GB limit in the Udacity workspace
+__SCALE_FACTOR [initial]__  >> This needed to be kept < 2.8 so that the pickle file did not exceed 3GB limit in the Udacity workspace. However, for my final few rounds I stopped loading from the pickle file.
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model? **still to do**
 
 If a well known architecture was chosen:
@@ -175,7 +179,7 @@ Here are the results of my model's prediction on the images downloaded from the 
 | 02.jpg  | Yield     			  | 100%	Accurate									|
 | 03.jpg  | Bike crossing		  | 67%											|
 | 04.jpg  | Roadworks	      	| 75%				 				|
-| 05.jpg  | Bumpy road			  | 60%     							|
+| 05.jpg  | Bumpy road			  | 80%     							|
 
 **still to do**
 
