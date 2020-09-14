@@ -71,9 +71,7 @@ Prior to running the model, additional steps were performed:
 * __Convert images to grayscale__  
 _The above referenced Sermanet and LeCun whitepaper mentions on page 2 that using grayscale images improved ConvNet performance_
 * __Normalize the data__  
-
-Finally, as recommended by Udacity programme, I chose to Normalize the image to within the range (-1, +1) by scaling with the following adjustment to the X_train pixel data >>> **(X_train - 128) / 128**.  
-_The above was recommended by Udacity programme_
+_As recommended by Udacity programme, image data was Normalized to the range (-1, +1) by applying following calculation to X_train pixel data >>> **(X_train - 128) / 128**._  
 
 The difference between the original data set and the augmented data set is illustrated by the below charts.
 <br/>
@@ -139,21 +137,22 @@ My final model results were:
 * test set accuracy of ? **still to do**  
 
 If an iterative approach was chosen: **still to do**
-* What was the first architecture that was tried and why was it chosen? **The architecture was kept pretty much the same as provided by the course**
+* What was the first architecture that was tried and why was it chosen? **The architecture was kept pretty much the same as provided by the Udacity programme**
 * What were some problems with the initial architecture? **still to do**
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting. **still to do**
-* Which parameters were tuned? How were they adjusted and why? **still to do**
-Through trial and error, I found the following:
-__EPOCHS__ >> Accuracy improved after ~ 8 epochs but by 12 epochs any improvement was minimal
-__mu__ >> Accuracy decreased if mu was made too large or too small
-__sigma__ >> Accuracy decreased if sigma was made too large or too small
-__rate__ >> Accuracy decreased if the training rate was made too large or too small
-__SCALE_FACTOR [initial]__  >> This needed to be kept < 2.8 so that the pickle file did not exceed 3GB limit in the Udacity workspace. However, for my final few rounds I stopped loading from the pickle file.
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model? **still to do**
+* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+* Which parameters were tuned? How were they adjusted and why?
+Through trial and error, I adjusted the following parameters:
+__EPOCHS__ >> _Accuracy improved after ~ 8 epochs but by 12 epochs any improvement was minimal_
+__mu__ >> _Accuracy decreased if mu was made too large or too small_
+__sigma__ >> _Accuracy decreased if sigma was made too large or too small_
+__rate__ >> _Accuracy decreased if the training rate was made too large or too small_
+__SCALE_FACTOR [initial]__  >> _This needed to be kept < 2.8 so that the pickle file did not exceed 3GB limit in the Udacity workspace. However, for my final few rounds I stopped loading from the pickle file._
+__DROP_OUT__ >> _Accuracy improved dramatically after adding this_
+* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model? _Convolution layer works well for traffic sign classifying as we apply multiple filters over the image to extract different features and then the model learns those filters!_  _A dropout layer can be useful in a CNN to prevent the model from overfitting._
 
 If a well known architecture was chosen:
 * What architecture was chosen?  **LeNet** _[but modified as per Udacity programme recommendation]_
-* Why did you believe it would be relevant to the traffic sign application?  _[as per programme recommendation]_
+* Why did you believe it would be relevant to the traffic sign application?  _LeNet is a proven re-usable architecture for achieving high level of accuracy for 2D image recognition and the German traffic sign database holds a large number of well-defined traffic sign photos for which the variation for each sign is minimal; the only things that are changing are things like viewing angle, light conditions etc..._
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well? **still to do**
 
 
@@ -175,8 +174,8 @@ Here are the results of my model's prediction on the images downloaded from the 
 
 | #       |    Image			        |     Prediction	        					|
 |:-------:|:---------------------:|:---------------------------------:|
-| 01.jpg  | 30 km/h      		  | 100%  Accurate									|
-| 02.jpg  | Yield     			  | 100%	Accurate									|
+| 01.jpg  | 30 km/h      		  | 100%  									|
+| 02.jpg  | Yield     			  | 100%										|
 | 03.jpg  | Bike crossing		  | 67%											|
 | 04.jpg  | Roadworks	      	| 75%				 				|
 | 05.jpg  | Bumpy road			  | 80%     							|
@@ -185,9 +184,9 @@ Here are the results of my model's prediction on the images downloaded from the 
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in one of the bottom cells of the Ipython notebook.  **still to do**
+The code for making predictions on my final model is located in one of the bottom cells of the Ipython notebook.
 
-Softmax was able to correctly guess 3 of the 5 traffic signs, which gives an accuracy of 60%. This compares a little less than favourable to the accuracy of the test set of images. However, 03.jpg should be discounted as the Training data set only contains Bicycle warning signs inside a red triangle (class id 29).  Hence, this would make for overall accuracy of 75% (3 of 4), with only 05.jpg of the Bumpy road incorrectly classified.
+My model predicts that it will be able to guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares a little less than favourable to the accuracy of the test set of images. However, 03.jpg should be discounted as the Training data set only contains Bicycle warning signs inside a red triangle (class id 29).  Hence, this would make for overall accuracy of 100% (4 of 4), with only 05.jpg of the Bumpy road incorrectly classified.
 
 
 For the first image 01.jpg, the model is very sure that this is a 30km/h sign (probability of 100%), and the image does contain a 30km/h sign. The top five softmax probabilities were:
@@ -210,13 +209,13 @@ For the second image 02.jpg, the model is very sure that this is a Yield sign (p
 |  4.   | 0	      			| Tractor					 				|
 |  5.   | 0				    | Children crossing      							|
 
-For the third image 03.jpg, the model is very sure that this is a Roundabout sign (probability of 97%), but the image is a Bicycles sign.  From looking again at the GTSRB images, Bicycles crossing sign is inside a red triangle.  Hence it is no surprise that the model does not recognise this sign. The top five softmax probabilities were:
+For the third image 03.jpg, the model is very sure that this is a Roundabout sign (probability of 100%), but the image is a Bicycles sign.  From looking again at the GTSRB images, Bicycles crossing sign is inside a red triangle.  Hence it is no surprise that the model does not recognise this sign. The top five softmax probabilities were:
 
 | Rank     | Probability         	|     Prediction	        					|
 |:-----:|:---------------------:|:---------------------------------:|
-|  1.   | 0.97         			| Roundabout   									|
-|  2.   | 0.02     				| Priority 										|
-|  3.   | 0.01					| Keep right 										|
+|  1.   | 1.00         			| Roundabout   									|
+|  2.   | 0     				| Priority 										|
+|  3.   | 0					| Keep right 										|
 |  4.   | 0	      			| Left turn 					 				|
 |  5.   | 0				    | Priority at next junction     							|
 
@@ -230,12 +229,12 @@ For the fourth image 04.jpg, the model is very sure that this is a Roadworks sig
 |  4.   | 0	      			| Right bend 					 				|
 |  5.   | 0				    | Beware of ice/snow      							|
 
-For the fifth image 05.jpg, the model is relatively sure that this is a Yield sign (probability of 89%), but the image is in fact a Bumpy road sign. The top five softmax probabilities were:
+For the fifth image 05.jpg, the model is very sure that this is a Yield sign (probability of 100%), but the image is in fact a Bumpy road sign. The top five softmax probabilities were:
 
 | Rank     | Probability         	|     Prediction	        					|
 |:-----:|:---------------------:|:---------------------------------:|
-|  1.   | 0.89         			| Yield  									|
-|  2.   | 0.11     				| Tractor  										|
+|  1.   | 1.00         			| Yield  									|
+|  2.   | 0     				| Tractor  										|
 |  3.   | 0					| Bumpy road 										|
 |  4.   | 0	      			| Road narrows					 				|
 |  5.   | 0				    | Children crossing       							|

@@ -8,7 +8,7 @@ import os.path
 class ImagePreprocessor():
 
     OUTPUT_FILE   = '../data/train_preprocessed.p'
-    SCALE_FACTOR  = 2.8
+    SCALE_FACTOR  = 3.5
     TRAINING_FILE = '../data/train.p'
 
     def __init__(self):
