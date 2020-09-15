@@ -79,7 +79,7 @@ The difference between the original data set and the augmented data set is illus
 <img src="./output_images/training_pre_v_post_image_preprocessing.jpg" width=60% height=60%>
 <br/>
 
-Here are some example of augmented images created off the original image X_train[555], Class Id: 12 >> Priority road:  
+Here are some example of augmented images created off the original image X_train[555], Class Id: 31 >> Wild animals crossing:  
 * __Augmented image examples__
 <img src="./output_images/training_augmented_images_sample_transformations.jpg" width=40% height=40%>
 <br/>
@@ -90,8 +90,8 @@ Here are some example of augmented images created off the original image X_train
 <img src="./output_images/lenet.png" width=50% height=50%>
 <br/>
 
-Taking above LeNet model, as a starting point my final model consisted of the following layers:
-_[minimally changed from the starter code provided]_
+Taking above LeNet model as a starting point, my final model consisted of the following layers:  
+_[in fact, it was minimally changed from the starter code provided]_
 
 | Layer         		|     Description	        					|
 |:---------------------:|:---------------------------------------------:|
@@ -109,7 +109,7 @@ _[minimally changed from the starter code provided]_
 | RELU					|												|
 | Layer 5: Convolution 3x3     	| Input = 84, Output = 43 	|
 | RELU					|												|
-| Softmax				| etc.        									|
+| Softmax				|     									|
 |						|												|
 |						|												|
 
@@ -125,8 +125,9 @@ __LeNet__
 * sigma = 0.1  
 __Training Pipeline__  
 * rate = 0.0009    
+* optimizer = AdamOptimizer  
 __Image Pre-Processing__  
-* SCALE_FACTOR = 2.8  [initial]  
+* SCALE_FACTOR = 3.5  _[when run on local machine]_
 
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
@@ -146,13 +147,13 @@ __EPOCHS__ >> _Accuracy improved after ~ 8 epochs but by 12 epochs any improveme
 __mu__ >> _Accuracy decreased if mu was made too large or too small_
 __sigma__ >> _Accuracy decreased if sigma was made too large or too small_
 __rate__ >> _Accuracy decreased if the training rate was made too large or too small_
-__SCALE_FACTOR [initial]__  >> _This needed to be kept < 2.8 so that the pickle file did not exceed 3GB limit in the Udacity workspace. However, for my final few rounds I stopped loading from the pickle file._
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model? _Convolution layer works well for traffic sign classifying as we apply multiple filters over the image to extract different features and then the model learns those filters!_  _A dropout layer can be useful in a CNN to prevent the model from overfitting. Although when I experimented with one in my model, I was unable to get it to improve the model accuracy_
+__SCALE_FACTOR [initial]__  >> _This needed to be kept < 2.8 so that the pickle file did not exceed 3GB limit in the Udacity workspace. However, for my final few rounds I stopped loading from the pickle file and ran the model on my local machine with SCALE_FACTOR = 3.5._
+* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model? _Convolution layer works well for traffic sign classifying as multiple filters get applied over the image to extract different features and then the model learns those filters!_  _A dropout layer can be useful in a CNN to prevent the model from overfitting. Although when I experimented with one in my model, I was unable to get it to improve the model accuracy_
 
 If a well known architecture was chosen:
-* What architecture was chosen?  **LeNet** _[but modified as per Udacity programme recommendation]_
-* Why did you believe it would be relevant to the traffic sign application?  _LeNet is a proven re-usable architecture for achieving high level of accuracy for 2D image recognition and the German traffic sign database holds a large number of well-defined traffic sign photos for which the variation for each sign is minimal; the only things that are changing are things like viewing angle, light conditions etc..._
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well? **The model has an increasing level of accuracy on smaller data sets (training >> validation >> test) and even on the augmented training data set with >140,000 images accuracy is still ~90%**
+* What architecture was chosen?  **LeNet** _[but modified as per Udacity programme recommendation to take color images with 3 layers]_
+* Why did you believe it would be relevant to the traffic sign application?  _LeNet is a proven re-usable architecture for achieving high level of accuracy for 2D image recognition in multiple scenarios and the German traffic sign database holds a large number of well-defined traffic sign photos for which the variation for each sign is minimal; the only things that are changing are things like viewing angle, light conditions etc..._
+* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well? **The model has an increasing level of accuracy on data sets that get smaller in size (training >> validation >> test) and even on the augmented training data set with >140,000 images accuracy is still ~90%**
 
 
 ### Test a Model on New Images
@@ -169,7 +170,7 @@ Each of the images looked very clear and straightforward to classify.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
-Here are the results of my model's prediction on the images downloaded from the web:
+My model predicts that it will be able achieve overall accuracy of 60% on the 5 new traffic sign images downloaded from the web; with the following details.
 
 | #       |    Image			        |     Prediction	        					|
 |:-------:|:---------------------:|:---------------------------------:|
@@ -179,14 +180,10 @@ Here are the results of my model's prediction on the images downloaded from the 
 | 04.jpg  | Roadworks	      	| 75%				 				|
 | 05.jpg  | Bumpy road			  | 60%     							|
 
-**still to do**
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in one of the bottom cells of the Ipython notebook.
-
-My model predicts that it will be able to guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares a little less than favourable to the accuracy of the test set of images. However, 03.jpg should be discounted as the Training data set only contains Bicycle warning signs inside a red triangle (class id 29).  Hence, this would make for overall accuracy of 100% (4 of 4), with only 05.jpg of the Bumpy road incorrectly classified.
-
+Softmax predicts that the model classifies the 5 traffic signs with an accuracy of 100%. However, 03.jpg should be discounted as the Training data set only contains Bicycle warning signs inside a red triangle (class id 29).  Hence, if we ignore prediction for 03.jpg, the model is correct in 3 of 4 cases or 75%; 05.jpg continues to be classified incorrectly; as Yield, rather than Bumpy Road.
 
 For the first image 01.jpg, the model is very sure that this is a 30km/h sign (probability of 100%), and the image does contain a 30km/h sign. The top five softmax probabilities were:
 
