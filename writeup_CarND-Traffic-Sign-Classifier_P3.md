@@ -119,7 +119,7 @@ _[minimally changed from the starter code provided]_
 To train the model, I tried adjusting each of the following variables up and down in turn. Then I settled with below values to maximise Validation Accuracy results.  
 __TensorFlow__  
 * EPOCHS = 14  
-* BATCH_SIZE = 96   
+* BATCH_SIZE = 100     
 __LeNet__  
 * mu = 0  
 * sigma = 0.1  
@@ -132,13 +132,13 @@ __Image Pre-Processing__
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of 0.911
-* validation set accuracy of 0.933
-* test set accuracy of ? **still to do**  
+* training set accuracy of **0.899**  
+* validation set accuracy of **0.938**  
+* test set accuracy of **0.993**    
 
-If an iterative approach was chosen: **still to do**
+If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen? **The architecture was kept pretty much the same as provided by the Udacity programme**
-* What were some problems with the initial architecture? **still to do**
+* What were some problems with the initial architecture? **It seemed to work okay**
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
 * Which parameters were tuned? How were they adjusted and why?
 Through trial and error, I adjusted the following parameters:
@@ -147,13 +147,12 @@ __mu__ >> _Accuracy decreased if mu was made too large or too small_
 __sigma__ >> _Accuracy decreased if sigma was made too large or too small_
 __rate__ >> _Accuracy decreased if the training rate was made too large or too small_
 __SCALE_FACTOR [initial]__  >> _This needed to be kept < 2.8 so that the pickle file did not exceed 3GB limit in the Udacity workspace. However, for my final few rounds I stopped loading from the pickle file._
-__DROP_OUT__ >> _Accuracy improved dramatically after adding this_
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model? _Convolution layer works well for traffic sign classifying as we apply multiple filters over the image to extract different features and then the model learns those filters!_  _A dropout layer can be useful in a CNN to prevent the model from overfitting._
+* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model? _Convolution layer works well for traffic sign classifying as we apply multiple filters over the image to extract different features and then the model learns those filters!_  _A dropout layer can be useful in a CNN to prevent the model from overfitting. Although when I experimented with one in my model, I was unable to get it to improve the model accuracy_
 
 If a well known architecture was chosen:
 * What architecture was chosen?  **LeNet** _[but modified as per Udacity programme recommendation]_
 * Why did you believe it would be relevant to the traffic sign application?  _LeNet is a proven re-usable architecture for achieving high level of accuracy for 2D image recognition and the German traffic sign database holds a large number of well-defined traffic sign photos for which the variation for each sign is minimal; the only things that are changing are things like viewing angle, light conditions etc..._
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well? **still to do**
+* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well? **The model has an increasing level of accuracy on smaller data sets (training >> validation >> test) and even on the augmented training data set with >140,000 images accuracy is still ~90%**
 
 
 ### Test a Model on New Images
@@ -178,7 +177,7 @@ Here are the results of my model's prediction on the images downloaded from the 
 | 02.jpg  | Yield     			  | 100%										|
 | 03.jpg  | Bike crossing		  | 67%											|
 | 04.jpg  | Roadworks	      	| 75%				 				|
-| 05.jpg  | Bumpy road			  | 80%     							|
+| 05.jpg  | Bumpy road			  | 60%     							|
 
 **still to do**
 
