@@ -23,6 +23,11 @@ The main steps for this project are the following:
 ### Writeup / README
 
 Here is a link to my [project code](https://github.com/matttpj/CarND-Traffic-Sign-Classifier)  
+Key files are:
+ * Data augmentation: _preprocessor.py, effects.py_  
+ * Ipython notebook: _Traffic_Sign_Classifier-P3.ipynb, Traffic_Sign_Classifier-P3_final.html_  
+ * Writeup: _writeup_CarND-Traffic-Sign-Classifier_P3.md_  
+
 
 ### Data Set Summary & Exploration
 
